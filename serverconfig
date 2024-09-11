@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+    # ServerName is optional when using IP
+    # ServerName your_server_ip
+
+    # Proxy settings to forward requests to Node.js app
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+
+    # Optionally, specify directory permissions
+    <Directory />
+        Require all granted
+    </Directory>
+
+    # Logging (optional)
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
